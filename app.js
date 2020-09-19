@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const expressValidator = require('express-validator')
@@ -32,6 +33,14 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(expressValidator())
+
+/*
+* Cross-Origin Resource Sharing (CORS) — механизм, использующий дополнительные HTTP-заголовки,
+* чтобы дать возможность агенту пользователя получать разрешения на доступ к выбранным ресурсам с сервера на источнике (домене),
+* отличном от того, что сайт использует в данный момент. Говорят, что агент пользователя делает запрос с другого источника (cross-origin HTTP request),
+* если источник текущего документа отличается от запрашиваемого ресурса доменом, протоколом или портом.
+ */
+app.use(cors())
 
 // Import routes
 app.use('/api', authRoutes)
