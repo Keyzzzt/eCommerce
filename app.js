@@ -12,6 +12,8 @@ require('dotenv').config() // allow us to get variables from .env file
 //Import Routes
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
+const categoryRoutes = require('./routes/category')
+const productRoutes = require('./routes/product')
 
 // App
 const app = express()
@@ -31,9 +33,11 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(expressValidator())
 
-// Routes middleware
+// Import routes
 app.use('/api', authRoutes)
 app.use('/api', userRoutes)
+app.use('/api', categoryRoutes)
+app.use('/api', productRoutes)
 
 
 
